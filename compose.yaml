@@ -1,0 +1,19 @@
+version: '2.0'
+services:
+  backend:
+    image: app_backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+  frontend:
+    image: app_frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8081:3000
+    depends_on:
+      - backend
+        
