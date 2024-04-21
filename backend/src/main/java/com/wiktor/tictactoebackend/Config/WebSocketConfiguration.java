@@ -16,11 +16,13 @@ import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
-    @Value("${FRONT_ORIGIN:http://localhost:8081}")
-    private String frontOrigin;
+    @Value("${FRONT_IP:http://localhost:8081}")
+    private String frontIP;
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        String frontOrigin = "http://" + frontIP + ":8081";
         System.out.println(frontOrigin);
+        System.out.println();
         registry.addEndpoint("/gameplay").setAllowedOrigins(frontOrigin).withSockJS();
     }
 
