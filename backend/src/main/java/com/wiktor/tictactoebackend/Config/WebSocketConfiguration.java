@@ -21,8 +21,6 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         String frontOrigin = "http://" + frontIP + ":8081";
-        System.out.println(frontOrigin);
-        System.out.println();
         registry.addEndpoint("/gameplay").setAllowedOrigins(frontOrigin).withSockJS();
     }
 
